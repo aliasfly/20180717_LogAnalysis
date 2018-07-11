@@ -1,6 +1,6 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.3
-
+import QtQuick.Controls.Styles 1.4
 
 ApplicationWindow {
     id: mainWindow
@@ -29,6 +29,8 @@ ApplicationWindow {
                 anchors.top:parent.top
                 anchors.topMargin: 5
                 text: qsTr("Open Log")
+                onClicked: {
+                }
             }
             CheckBox {
                 id:mark
@@ -37,7 +39,22 @@ ApplicationWindow {
                 anchors.top: openlog.top
                 anchors.bottom: openlog.bottom
                 text: qsTr("Mark")
+                onClicked: {
+                    if(mark.checked==true)
+                    {
+                    }
+                }
             }
+        }
+        Rectangle {
+            id:mouseright
+            anchors.right:headrectangle.right
+            anchors.rightMargin: 1
+            anchors.top: headrectangle.top
+            anchors.topMargin: 1
+            anchors.bottom: headrectangle.bottom
+            anchors.bottomMargin: 1
+            width: 100
         }
         Rectangle {
             id:debugmessagerectangle
