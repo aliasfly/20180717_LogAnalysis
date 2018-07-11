@@ -1,6 +1,6 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.3
-import QtQuick.Controls.Styles 1.4
+import QtQuick.Dialogs 1.3
 
 ApplicationWindow {
     id: mainWindow
@@ -30,6 +30,22 @@ ApplicationWindow {
                 anchors.topMargin: 5
                 text: qsTr("Open Log")
                 onClicked: {
+                    fileDialog.open()
+                }
+            }
+            FileDialog {
+                id:fileDialog
+                title: "Please choose a file"
+                folder: shortcuts.home
+                onAccepted: {
+                    console.log("You chose: " + fileDialog.fileUrl)
+//                    LogInterface.fileName = fileDialog.fileUrl
+//                                            console.log(fileDialog.fileUrl)
+//                    rootLoader.sourceComponent = schedulePlane
+
+                }
+                onRejected: {
+                    console.log("fileDialog.open() Canceled")
                 }
             }
             CheckBox {
