@@ -38,9 +38,12 @@ ApplicationWindow {
                 anchors.leftMargin: 10
                 anchors.top: openlog.top
                 anchors.bottom: openlog.bottom
-                text: qsTr("Mark")
+                text: qsTr("Markers")
                 onClicked: {
                     if(mark.checked==true)
+                    {
+                    }
+                    else
                     {
                     }
                 }
@@ -58,7 +61,7 @@ ApplicationWindow {
             MouseArea {
                 id:mouseMA
                 anchors.fill: parent
-                acceptedButtons: Qt.RightButton;
+                acceptedButtons: Qt.RightButton|Qt.LeftButton;
                 onReleased: {
                     if(mouse.button == Qt.RightButton)
                     {
@@ -66,6 +69,11 @@ ApplicationWindow {
                         loaderRightMenu.x=mouseMA.mouseX
                         loaderRightMenu.y=mouseMA.mouseY
                         loaderRightMenu.visible=true
+                    }
+                    else
+                    {
+                        console.log("MouseArea LeftButton")
+                        loaderRightMenu.visible=false
                     }
                 }
             }
@@ -79,9 +87,15 @@ ApplicationWindow {
                             title:"options"
                             MenuItem {
                                 text: "debug"
+                                onTriggered: {
+                                    debugmessagerectangle.visible=true
+                                }
                             }
                             MenuItem {
                                 text: "release"
+                                onTriggered: {
+                                    debugmessagerectangle.visible=false
+                                }
                             }
                         }
                     }
