@@ -47,7 +47,7 @@ ApplicationWindow {
             }
         }
         Rectangle {
-            id:mouseright
+            id:mouserightrectangle
             anchors.right:headrectangle.right
             anchors.rightMargin: 1
             anchors.top: headrectangle.top
@@ -55,6 +55,38 @@ ApplicationWindow {
             anchors.bottom: headrectangle.bottom
             anchors.bottomMargin: 1
             width: 100
+            MouseArea {
+                id:mouseMA
+                anchors.fill: parent
+                acceptedButtons: Qt.RightButton;
+                onReleased: {
+                    if(mouse.button == Qt.RightButton)
+                    {
+                        console.log("MouseArea RightButton")
+                        loaderRightMenu.x=mouseMA.mouseX
+                        loaderRightMenu.y=mouseMA.mouseY
+                        loaderRightMenu.visible=true
+                    }
+                }
+            }
+            Loader {
+                id:loaderRightMenu
+                visible: false
+                sourceComponent: Component {
+                    id:compRightMenu
+                    MenuBar {
+                        Menu {
+                            title:"options"
+                            MenuItem {
+                                text: "debug"
+                            }
+                            MenuItem {
+                                text: "release"
+                            }
+                        }
+                    }
+                }
+            }
         }
         Rectangle {
             id:debugmessagerectangle
