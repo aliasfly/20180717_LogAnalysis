@@ -43,60 +43,8 @@ ApplicationWindow {
                 }
             }
         }
-//        Rectangle {
-//            id:mouserightrectangle
-//            anchors.right:haederToolBar.right
-//            anchors.rightMargin: 1
-//            anchors.top: haederToolBar.top
-//            anchors.topMargin: 1
-//            anchors.bottom: haederToolBar.bottom
-//            anchors.bottomMargin: 1
-//            width: 100
-//            MouseArea {
-//                id:mouseMA
-//                anchors.fill: parent
-//                acceptedButtons: Qt.RightButton|Qt.LeftButton;
-//                onReleased: {
-//                    if(mouse.button == Qt.RightButton)
-//                    {
-//                        console.log("MouseArea RightButton")
-//                        loaderRightMenu.x=0                     //mouseMA.mouseX
-//                        loaderRightMenu.y=4                     //mouseMA.mouseY
-//                        loaderRightMenu.visible=true
-//                    }
-//                    else
-//                    {
-//                        console.log("MouseArea LeftButton")
-//                        loaderRightMenu.visible=false
-//                    }
-//                }
-//            }
-//            Loader {
-//                id:loaderRightMenu
-//                visible: false
-//                sourceComponent: Component {
-//                    id:compRightMenu
-//                    MenuBar {
-//                        Menu {
-//                            title:"options"
-//                            MenuItem {
-//                                text: "debug"
-//                                onTriggered: {
-////                                    debugmessagerectangle.visible=true
-//                                }
-//                            }
-//                            MenuItem {
-//                                text: "release"
-//                                onTriggered: {
-////                                    debugmessagerectangle.visible=true
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
     }
+
     FileDialog {
         id:fileDialog
         title: "Please choose a file"
@@ -112,67 +60,122 @@ ApplicationWindow {
             console.log("fileDialog.open() Canceled")
         }
     }
+
+
     Item {
-        id: backitem
+        id: backItem
         anchors.fill:parent
+
         Rectangle {
-            id:debugmessagerectangle
+            id:debugMessageRectangle
             border.color: "#888888"
             border.width: 1
-            anchors.left: backitem.left
+            anchors.left: backItem.left
             anchors.leftMargin: 1
-            anchors.right: backitem.right
+            anchors.right: backItem.right
             anchors.rightMargin: 1
-            anchors.bottom: backitem.bottom
+            anchors.bottom: backItem.bottom
             anchors.bottomMargin: 1
             height: 100
         }
 
-
-
-
         Rectangle {
-            id:namerectangle
+            id:nameRectangle
             border.color: "#888888"
             border.width: 1
             width: 200
-            anchors.left: backitem.left
+            anchors.left: backItem.left
             anchors.leftMargin: 1
-            anchors.top: headrectangle.bottom
-            anchors.topMargin: 1
-            anchors.bottom: debugmessagerectangle.top
-            anchors.bottomMargin: 1
+            anchors.top: backItem.top
+            anchors.bottom: debugMessageRectangle.top
             Button {
-                id:resetbutton
-                anchors.left: namerectangle.left
+                id:resetButton
+                anchors.left: nameRectangle.left
                 anchors.leftMargin: 1
-                anchors.top: namerectangle.top
+                anchors.top: nameRectangle.top
                 anchors.topMargin: 1
-                anchors.right: namerectangle.right
+                anchors.right: nameRectangle.right
                 anchors.rightMargin: 1
                 text: qsTr("Reset")
             }
             Rectangle {
-                id:namelistrectangle
-                anchors.top: resetbutton.bottom
-                anchors.left: resetbutton.left
+                id:nameListRectangle
+                anchors.top: resetButton.bottom
+                anchors.left: resetButton.left
                 anchors.leftMargin: 1
-                anchors.right: resetbutton.right
+                anchors.right: resetButton.right
                 anchors.rightMargin: 1
-                anchors.bottom: namerectangle.bottom
+                anchors.bottom: nameRectangle.bottom
                 anchors.bottomMargin: 1
             }
         }
+
         Rectangle {
-            id:chartrectangle
+            id:chartRectangle
             border.color: "#888888"
             border.width: 1
-            anchors.left: namerectangle.right
-            anchors.leftMargin: 1
-            anchors.top:namerectangle.top
-            anchors.bottom: namerectangle.bottom
-            anchors.right: backitem.right
+            anchors.left: nameRectangle.right
+            anchors.top:nameRectangle.top
+            anchors.bottom: nameRectangle.bottom
+            anchors.right: backItem.right
             anchors.rightMargin: 1
+        }
+
+        Rectangle {
+            id:mouseRightRectangle
+            anchors.right:debugMessageRectangle.right
+            anchors.rightMargin: 5
+            anchors.bottom: debugMessageRectangle.bottom
+            anchors.bottomMargin: 5
+            width: 100
+            height: 90
+
+            MouseArea {
+                id:mouseMA
+                anchors.fill: parent
+                acceptedButtons: Qt.RightButton|Qt.LeftButton;
+                onReleased: {
+                    if(mouse.button == Qt.RightButton)
+                    {
+                        console.log("MouseArea RightButton")
+                        loaderRightMenu.x=0                     //mouseMA.mouseX
+                        loaderRightMenu.y=0                     //mouseMA.mouseY
+                        loaderRightMenu.visible=true
+//                        console.log("mouseMA.mouseX=",mouseMA.mouseX)
+//                        console.log("mouseMA.mouseY=",mouseMA.mouseY)
+                    }
+                    else
+                    {
+                        console.log("MouseArea LeftButton")
+                        loaderRightMenu.visible=false
+                    }
+                }
+            }
+
+            Loader {
+                id:loaderRightMenu
+                visible: false
+                sourceComponent: Component {
+                    id:compRightMenu
+                    MenuBar {
+                        Menu {
+                            title:"options"
+                            MenuItem {
+                                text: "debug"
+                                onTriggered: {
+//                                    debugMessageRectangle.visible=true
+                                }
+                            }
+                            MenuItem {
+                                text: "release"
+                                onTriggered: {
+//                                    debugMessageRectangle.visible=true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
