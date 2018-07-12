@@ -111,13 +111,14 @@ ApplicationWindow {
                 anchors.bottomMargin: 1
 
                 Controls.TreeView {
-                      Controls.TableViewColumn {
-                          title: "Name"
-                          role: "fileName"
-                          width: 300
-                      }
-//                      model: {}
-                  }
+//                    model: QAbstractItemModel*
+                    alternatingRowColors:false                //default: true
+                    Controls.TableViewColumn {
+                        title: "Name"
+                        role: "fileName"
+                        width: 300
+                    }
+                }
             }
         }
 
