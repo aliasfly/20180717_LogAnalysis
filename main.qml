@@ -116,12 +116,7 @@ ApplicationWindow {
                           role: "fileName"
                           width: 300
                       }
-                      Controls.TableViewColumn {
-                          title: "Permissions"
-                          role: "filePermissions"
-                          width: 100
-                      }
-//                      model: fileSystemModel
+//                      model: {}
                   }
             }
         }
