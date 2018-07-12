@@ -1,7 +1,8 @@
 import QtQuick 2.10
+import QtCharts 2.2
 import QtQuick.Controls 2.3
-import QtQuick.Dialogs 1.3
 import QtQuick.Layouts 1.3
+import QtQuick.Dialogs 1.3
 
 ApplicationWindow {
     id: mainWindow
@@ -119,6 +120,31 @@ ApplicationWindow {
             anchors.bottom: nameRectangle.bottom
             anchors.right: backItem.right
             anchors.rightMargin: 1
+
+            ChartView {
+                id:chartView
+                title: "Line"
+                anchors.left: parent.left
+                anchors.leftMargin: 10
+                anchors.right: parent.right
+                anchors.rightMargin: 10
+                anchors.top: parent.top
+                anchors.topMargin: 10
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 10
+                antialiasing: true
+
+                LineSeries {
+                    name: "LineSeries"
+                    XYPoint { x: 0; y: 0 }
+                    XYPoint { x: 1.1; y: 2.1 }
+                    XYPoint { x: 1.9; y: 3.3 }
+                    XYPoint { x: 2.1; y: 2.1 }
+                    XYPoint { x: 2.9; y: 4.9 }
+                    XYPoint { x: 3.4; y: 3.0 }
+                    XYPoint { x: 4.1; y: 3.3 }
+                }
+            }
         }
 
         Rectangle {
