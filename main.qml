@@ -3,6 +3,7 @@ import QtCharts 2.2
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Dialogs 1.3
+import QtQuick.Controls 1.4 as Controls
 
 ApplicationWindow {
     id: mainWindow
@@ -109,19 +110,19 @@ ApplicationWindow {
                 anchors.bottom: nameRectangle.bottom
                 anchors.bottomMargin: 1
 
-//                TreeView {
-//                      TableViewColumn {
-//                          title: "Name"
-//                          role: "fileName"
-//                          width: 300
-//                      }
-//                      TableViewColumn {
-//                          title: "Permissions"
-//                          role: "filePermissions"
-//                          width: 100
-//                      }
-////                      model: fileSystemModel
-//                  }
+                Controls.TreeView {
+                      Controls.TableViewColumn {
+                          title: "Name"
+                          role: "fileName"
+                          width: 300
+                      }
+                      Controls.TableViewColumn {
+                          title: "Permissions"
+                          role: "filePermissions"
+                          width: 100
+                      }
+//                      model: fileSystemModel
+                  }
             }
         }
 
