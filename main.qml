@@ -35,7 +35,7 @@ ApplicationWindow {
             anchors.left: toolButton.right
             anchors.leftMargin: 10
             onClicked: {
-                if(mark.checked==true)
+                if(checkBox.checked==true)
                 {
                 }
                 else
