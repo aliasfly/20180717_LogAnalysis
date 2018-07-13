@@ -29,6 +29,7 @@ ApplicationWindow {
             anchors.leftMargin: 10
             onClicked: {
                 fileDialog.open()
+                qml_fileParse.functiontest()
             }
         }
         CheckBox {
@@ -56,7 +57,6 @@ ApplicationWindow {
 //                    LogInterface.fileName = fileDialog.fileUrl
 //                                            console.log(fileDialog.fileUrl)
 //                    rootLoader.sourceComponent = schedulePlane
-
         }
         onRejected: {
             console.log("fileDialog.open() Canceled")
