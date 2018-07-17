@@ -29,7 +29,6 @@ ApplicationWindow {
             anchors.leftMargin: 10
             onClicked: {
                 fileDialog.open()
-                qml_fileParse.functiontest()
             }
         }
         CheckBox {
@@ -54,9 +53,7 @@ ApplicationWindow {
         folder: shortcuts.home
         onAccepted: {
             console.log("You chose: " + fileDialog.fileUrl)
-//                    LogInterface.fileName = fileDialog.fileUrl
-//                                            console.log(fileDialog.fileUrl)
-//                    rootLoader.sourceComponent = schedulePlane
+            qml_fileParse.fileName=fileDialog.fileUrl
         }
         onRejected: {
             console.log("fileDialog.open() Canceled")
